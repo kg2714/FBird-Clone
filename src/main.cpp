@@ -1,7 +1,7 @@
 #include "header/Bird.hpp"
 #include "header/Ground.hpp"
 #include "header/Pipes.hpp"
-#include "header/Score.hpp"
+#include "header/ScoreManager.hpp"
 #include <cstdlib>
 #include <ctime>
 #include <raylib.h>
