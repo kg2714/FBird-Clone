@@ -2,13 +2,15 @@ DEST = Bird
 SOURCE_FILES = src/*.cpp
 DEST_PATH = ./out
 INCLUDES = -I ./include
-LIBRARIES = -L ./lib
-LINKS = -lraylib -lgdi32 -lwinmm
+LIBRARIES_WIN = -L ./lib/dev-windows
+LIBRARIES_LINUX = -L ./lib/dev-linux
+LINKS_WIN = -lraylib -lgdi32 -lwinmm
+LINKS_LINUX = -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 
 
-FLAGS = $(INCLUDES) $(LIBRARIES) $(LINKS) 
+gcc_win:
+	g++ $(INCLUDES) $(SOURCE_FILES) -o $(DEST_PATH)/$(DEST) $(LIBRARIES_WIN) $(LINKS_WINDOWS)
 
-clang:
-	clang++ $(FLAGS) --target=x86_64-w64-windows-gnu $(SOURCE_FILES) -o $(DEST_PATH)/$(DEST)
+gcc_linux:
+	g++ $(INCLUDES) $(SOURCE_FILES) -o $(DEST_PATH)/$(DEST) $(LIBRARIES_LINUX) $(LINKS_LINUX)
 
-gcc:
-	g++ $(SOURCE_FILES) -o $(DEST_PATH)/$(DEST) $(FLAGS)
+	
